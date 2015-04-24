@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from xmlpretty import prettify
 
 import difflib
@@ -13,10 +16,10 @@ def diffdir(dir1, dir2):
     import os.path
     import random
 
-    dirlist = os.listdir(dir1)
-    random.shuffle(dirlist)
-
     difflist = []
+    dirlist = os.listdir(dir1)
+
+    print 'Vil nå diffe %i par med filer...' % len(dirlist)
 
     for filename in dirlist:
         diffres = diff(os.path.join(dir1, filename), os.path.join(dir2, filename))
