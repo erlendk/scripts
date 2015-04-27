@@ -31,6 +31,15 @@ def diffdir(dir1, dir2):
 
     print 'Antall mismatches: %i' % len(difflist)
 
+    if len(difflist) > 0:
+        diff_prompt = raw_input('Vis differ (j/n)? ').lower()
+
+        if diff_prompt != 'n':
+            for filename, diffres in difflist:
+                print filename
+                print diffres
+                print ''
+
 
 if __name__ == '__main__':
     import sys
