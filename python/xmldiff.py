@@ -6,10 +6,17 @@ from xmlpretty import prettify
 import difflib
 
 def diff(filename1, filename2):
-    text1 = prettify(filename1)
-    text2 = prettify(filename2)
+    import lxml
+    
+    try:
+        text1 = prettify(filename1)
+        text2 = prettify(filename2)
+    except lxml.etree.XMLSyntaxError:
+        return ''
+
     difflist = list(difflib.unified_diff(text1.splitlines(True), text2.splitlines(True), filename1, filename2))
     return ''.join(difflist)
+
 
 def diffdir(dir1, dir2):
     import os
